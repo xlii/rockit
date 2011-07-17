@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
+gem 'activeadmin'
 
 # Deploy with Capistrano
 # gem 'capistrano'
