@@ -21,7 +21,7 @@ ActiveAdmin.setup do |config|
   #
   # To set no namespace by default, use:
   #   config.default_namespace = false
-  config.default_namespace = :admin
+  config.default_namespace = false
 
 
   # == User Authentication
