@@ -1,0 +1,9 @@
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: xlii_projects
+  pool: 5
+  username: xlii
+  password: <%= Capistrano::CLI.ui.ask("Enter MySQL database password: ") %>
+  host: mysql.xlii.com.br
