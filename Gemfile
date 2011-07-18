@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rack', '1.2.1'
 gem 'rails', '3.0.9'
 gem 'activeadmin'
+gem 'paper_trail'
 gem 'capistrano'
 
 group :development, :test do
