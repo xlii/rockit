@@ -7,7 +7,7 @@ default_run_options[:pty] = true
 
 # be sure to change these
 set :user, 'xlii'
-set :domain, 'projects.xlii.com.br'
+set :domain, 'rockit.xlii.com.br'
 set :application, 'rockit'
 
 # the rest should be good
