@@ -1,4 +1,5 @@
 class Task < ActiveRecord::Base
+  has_paper_trail
   belongs_to :project
   belongs_to :resolution
   
