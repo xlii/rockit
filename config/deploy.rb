@@ -15,7 +15,16 @@ set :repository,  "git://github.com/#{user}/#{application}.git"
 set :deploy_to, "/home/#{user}/#{domain}"
 set :deploy_via, :remote_cache
 set :scm, 'git'
-set :branch, 'master'
+
+set :branch do
+  # default_tag = `git tag`.split("\n").last
+  default_tag = 'master'
+
+  tag = Capistrano::CLI.ui.ask "Version to deploy (if is a tag make sure to push it first): [#{default_tag}] "
+  tag = default_tag if tag.empty?
+  tag
+end
+
 set :git_shallow_clone, 1
 set :scm_verbose, true
 set :use_sudo, false
