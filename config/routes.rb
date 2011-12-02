@@ -5,8 +5,4 @@ Rockit::Application.routes.draw do
   
   root :to => redirect('/admin')
   
-  devise_scope :admin_user do
-      get '/admin/logout', :to => 'active_admin/devise/sessions#destroy'
-  end
-
 end
