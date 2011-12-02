@@ -5,10 +5,6 @@ class CreateResolutions < ActiveRecord::Migration
 
       t.timestamps
     end
-
-    ['open', 'closed', "won't fix"].each do |name|
-      Resolution.create! :name => name
-    end
   end
 
   def self.down
