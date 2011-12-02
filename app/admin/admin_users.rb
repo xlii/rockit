@@ -1,7 +1,7 @@
 ActiveAdmin.register AdminUser do
   index do
     column :id do |admin_user|
-      link_to admin_user.id, admin_admin_user_path(admin_user)
+      link_to admin_user.id, resource_path(admin_user)
     end
     
     column :email
