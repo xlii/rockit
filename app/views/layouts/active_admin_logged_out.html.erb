@@ -1,0 +1,26 @@
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
+  <title>Rockit</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body class="logged_out <%= controller.action_name %>">
+	<div id="wrapper">
+		<div id="content_wrapper">
+		  <% if flash.keys.any? %>
+		    <% flash.each do |type, message| %>
+		      <%= content_tag :div, message, :class => "flash flash_#{type}" %>
+		    <% end %>
+		  <% end %>
+		  <div id="active_admin_content">
+		    <%= yield %>
+		  </div>
+		</div>
+		<div id="footer">
+		  <%= yield :footer %>
+		</div>
+	</div>
+</body>
+</html>
