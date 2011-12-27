@@ -27,6 +27,8 @@ class AdminUser < ActiveRecord::Base
   end
   
   def name
-  	first_name + ' ' + last_name
+  	name = ''
+  	name = first_name + ' ' + last_name unless first_name.nil? or last_name.nil?
+  	name
   end
 end
