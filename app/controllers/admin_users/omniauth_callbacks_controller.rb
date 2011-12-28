@@ -9,7 +9,6 @@ class AdminUsers::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
 		domain = split_email[1].to_s
 		if domain == 'xlii.com.br'
 		  @user = AdminUser.find_for_open_id(request.env["omniauth.auth"], current_admin_user)
-
 		  if @user.persisted?
 		    flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
 		    sign_in_and_redirect @user, :event => :authentication
