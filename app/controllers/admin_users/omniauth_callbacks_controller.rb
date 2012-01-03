@@ -7,7 +7,7 @@ class AdminUsers::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
   	email = request.env["omniauth.auth"].info["email"]
  		split_email = email.split('@') 		
 		domain = split_email[1].to_s
-		if domain == 'xlii.com.br'
+		if domain == 'fortito.com.br'
 		  @user = AdminUser.find_for_open_id(request.env["omniauth.auth"], current_admin_user)
 		  if @user.persisted?
 		    flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
@@ -17,7 +17,7 @@ class AdminUsers::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
 		    redirect_to new_admin_user_session_url
 		  end
 		else
-			flash[:notice] = "Only xlii users can access the system"
+			flash[:notice] = "Only fortito users can access the system"
 			redirect_to new_admin_user_session_url
 		end
   end
