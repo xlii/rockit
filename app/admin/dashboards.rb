@@ -33,6 +33,30 @@ ActiveAdmin::Dashboards.build do
   #   section "Recent Posts", :priority => 10
   #   section "Recent User", :priority => 1
   #
-  # Will render the "Recent Users" then the "Recent Posts" sections on the dashboard.
 
+	section "Recent Task Activities" do		
+    table_for Version.where(:item_type => "Task").order("created_at desc").limit(20) do
+      column :item do |version|
+        link_to version.item.name, admin_task_path(version.item)
+      end
+      
+      column :whodunnit do |version|
+      	user = AdminUser.find(version.whodunnit.to_i)
+      	"#{user.first_name} #{user.last_name}"
+      end
+      
+      column :event do |version|
+      	msg = "Task was "
+      	if version.event == "create"
+      		msg += "created"
+      	elsif version.event == "update"
+      		msg += "updated at fields: #{version.changeset.keys.to_sentence}"
+      	else
+      		msg += "deleted"
+      	end
+      	msg
+      end
+      column :created_at
+    end   
+	end
 end
