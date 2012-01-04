@@ -6,6 +6,8 @@ class AdminUser < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me
   
+  has_many :versions, :foreign_key => :whodunnit
+  
   def self.find_for_open_id(access_token, signed_in_resource=nil)
 		data = access_token.info		
 		if user = AdminUser.where(:email => data["email"]).first		
