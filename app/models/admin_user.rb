@@ -7,6 +7,7 @@ class AdminUser < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me
   
   has_many :versions, :foreign_key => :whodunnit
+  has_many :tasks
   
   def self.find_for_open_id(access_token, signed_in_resource=nil)
 		data = access_token.info		

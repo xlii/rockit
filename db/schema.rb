@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111222202029) do
+ActiveRecord::Schema.define(:version => 20120105141302) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20111222202029) do
     t.integer  "priority"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "admin_user_id"
   end
 
   create_table "versions", :force => true do |t|
