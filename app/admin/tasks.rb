@@ -10,4 +10,20 @@ ActiveAdmin.register Task do
     column :created_at
     default_actions
   end
+  
+  show :title => :name do
+    panel 'Task' do
+      attributes_table_for task  do 
+        row :id
+        row :project
+        row :name
+        row(:description) { simple_format task.description }
+        row :admin_user
+        row :resolution
+        row :priority
+        row(:created_at) { time_ago_in_words task.created_at }
+        row(:updated_at) { time_ago_in_words task.updated_at }        
+      end
+    end
+  end
 end
