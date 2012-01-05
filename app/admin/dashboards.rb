@@ -37,7 +37,12 @@ ActiveAdmin::Dashboards.build do
 	section "Recent Task Activities" do		
     table_for Version.where(:item_type => "Task").order("created_at desc").limit(20) do
       column :item do |version|
-        link_to version.item.name, admin_task_path(version.item)
+      	task = version.item
+      	if task.nil?
+      		"##{version.item_id}"
+      	else
+	        link_to "##{version.item_id}", admin_task_path(version.item)
+	      end
       end
       
       column :whodunnit do |version|
