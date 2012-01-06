@@ -33,8 +33,26 @@ ActiveAdmin::Dashboards.build do
   #   section "Recent Posts", :priority => 10
   #   section "Recent User", :priority => 1
   #
+  
+  section "Tasks in progress", :priority => 1 do
+  	table_for Task.where(:resolution_id => 1).where("admin_user_id is not null") do
+  		column :id do |task|
+  			link_to "##{task.id}", admin_task_path(task)
+  		end
+  		
+  		column :project
+  		
+  		column :name do |task|
+  			link_to "##{task.name}", admin_task_path(task)
+  		end
+  		
+  		column :admin_user
+  		column :priority
+  		column :created_at
+  	end
+  end
 
-	section "Recent Task Activities" do		
+	section "Recent Task Activities", :priority => 2 do		
     table_for Version.where(:item_type => "Task").order("created_at desc").limit(20) do
       column :item do |version|
       	task = version.item
