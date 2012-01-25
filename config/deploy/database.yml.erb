@@ -2,8 +2,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: xlii_rockit
+  host: <%= Capistrano::CLI.ui.ask("Enter MySQL database host name: ") %>
+  database: <%= Capistrano::CLI.ui.ask("Enter MySQL database name: ") %>
   pool: 5
-  username: xlii
+  username: <%= Capistrano::CLI.ui.ask("Enter MySQL database username: ") %>
   password: <%= Capistrano::CLI.ui.ask("Enter MySQL database password: ") %>
-  host: mysql.xlii.com.br

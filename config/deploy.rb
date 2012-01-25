@@ -1,4 +1,5 @@
-set :bundle_cmd,      "/home/xlii/.gem/ruby/1.8/bin/bundle"
+
+set :bundle_cmd, "/home/fortito/.gems/bin/bundle"
 
 require 'bundler/capistrano'
 require "#{File.dirname(__FILE__)}/deploy/capistrano_database_yml.rb"
@@ -6,13 +7,15 @@ require "#{File.dirname(__FILE__)}/deploy/capistrano_database_yml.rb"
 default_run_options[:pty] = true
 
 # be sure to change these
-set :user, 'xlii'
-set :domain, 'rockit.xlii.com.br'
+set :user, 'fortito'
+set :domain, 'rockit.fortito.com.br'
 set :application, 'rockit'
 
 # the rest should be good
-set :repository,  "git://github.com/#{user}/#{application}.git"
-set :deploy_to, "/home/#{user}/#{domain}"
+set :repository,  "git://github.com/xlii/#{application}.git"
+set :deploy_to do
+  "/home/#{user}/apps/#{domain}"
+end
 set :deploy_via, :remote_cache
 set :scm, 'git'
 
